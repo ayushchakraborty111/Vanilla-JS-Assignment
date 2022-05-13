@@ -1,0 +1,14 @@
+body{
+    background-color: rgb(185, 229, 243);
+}
+
+.main-div{
+    text-align: center;
+    margin-top: 5%;
+}
+
+.append-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
