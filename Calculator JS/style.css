@@ -4,15 +4,15 @@
 }
 
 .main-div{
-    width: 40vw;
-    margin: 40px auto;
-    border: 1.5px solid black;
+    width: 20vw;
+    margin: 80px auto;
+    border: 3.9px double rgb(181, 178, 178);
     font-family: Arial, Helvetica, sans-serif;
 }
 
 #screen{
     display: block;
-    width: 90%;
+    width: auto;
     height: 30px;
     margin: 20px auto;
     background-color: lightgray;
@@ -31,6 +31,7 @@ button{
 table{
     display: flex;
     justify-content: center;
+   
 }
 
 tr{
@@ -43,7 +44,24 @@ td{
     box-shadow: 1px 0px 3px rgb(104,104,104);
 }
 
-button:hover{
+td button:hover{
     transform: scale(1.1);
     background-color: rgb(146, 145, 145);
 }
+
+td button:active{
+    transform: scale(0.98);
+}
+
+@media screen and (max-width: 700px){
+    .main-div{
+        width: auto;
+    }
+}
+
+
+
+
+
+
+ 

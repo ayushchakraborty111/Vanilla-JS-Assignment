@@ -5,7 +5,7 @@ let buttons = document.querySelectorAll('button');
 for(let btn of buttons)
 {
     btn.addEventListener('click', (e)=>{
-        if(e.target.innerText != '='&& e.target.innerText != 'C')
+        if(e.target.innerText !== '='&& e.target.innerText !== 'C')
         {
             screen.value += e.target.innerText;
         }
@@ -80,9 +80,6 @@ for(let btn of buttons)
             operations();
         }
     })
-    btn.addEventListener('keydown', (e)=>{
-        
-    })
 }
 
 
@@ -91,7 +88,102 @@ screen.addEventListener('keypress', (e)=>{
     if(e.which == 13)
     {
         operations();
+        for(let btn of buttons)
+        {
+            if(btn.innerText == '=')
+            {
+                btn.style.background = 'orange';
+                btn.style.top = "4px";
+
+                setTimeout(function(){
+                    btn.style.background = 'rgb(241, 239, 237)';
+                    btn.style.top = "4px";
+                },300);
+            }
+        }
     }
+    console.log(e.keyCode);
+    if(e.key>='0' && e.key<='9')
+    {
+        for(let btn of buttons)
+        {
+            // if(screen.value.length == 1)
+            // {
+                let buttonTxt = btn.innerText;
+                if(buttonTxt == e.key)
+                {
+                    console.log('Hello');
+
+                        btn.style.background = 'orange';
+                        btn.style.top = "4px";
+                        
+
+                    setTimeout(function(){
+                        btn.style.background = 'rgb(241, 239, 237)';
+                        btn.style.top = "4px";
+                    },300);
+                    
+                    // btn.style.breakAfter
+                }
+            // }
+            // if(screen.value.length>=2)
+            // {
+            //     let buttonTxt = btn.innerText;
+            //     if(buttonTxt == e.key)
+            //     {
+            //         console.log('Hello');
+            //         if(btn.style.background != 'orange')
+            //             btn.style.background = 'orange';
+            //         else
+            //             btn.style.background = 'lightgray';
+            //     }
+            // }
+        }
+    }
+    else if(e.key == '+' || e.key == '-' || e.key == '.' || e.key == '%' || e.key == '/' || e.key == 'x')
+    {
+        for(let btn of buttons)
+        {
+            // if(screen.value.length == 1)
+            // {
+                let buttonTxt = btn.innerText;
+                if(buttonTxt == e.key)
+                {
+                    console.log('Hello');
+
+                    btn.style.background = 'orange';
+                    btn.style.top = "4px";                        
+
+                    setTimeout(function(){
+                        btn.style.background = 'rgb(241, 239, 237)';
+                        btn.style.top = "4px";
+                    },300);
+                }
+        }
+    }
+})
+screen.addEventListener('keydown', (e)=>{
+    console.log(e.keyCode);
+    //Grabbing the alt key and the 'C' key together
+    let evtObj = window.event?event : e;
+    if(evtObj.keyCode == 67 && evtObj.altKey)
+    {
+        clrv();
+        for(btn of buttons)
+        {
+            if(btn.innerText == "AC")
+            {
+                btn.style.background = 'orange';
+                btn.style.top = "4px";
+
+                setTimeout(function(){
+                    btn.style.background = 'rgb(241, 239, 237)';
+                    btn.style.top = "4px";
+                },300);
+            }
+        }
+    }
+    
 })
 
 
@@ -99,11 +191,13 @@ screen.addEventListener('keypress', (e)=>{
 
 
 
+//clears the input
 function clrv()
 {
     screen.value = "";
 }
 
+//slices the first and last
 function removeOp()
 {
     console.log('Hello');
@@ -113,6 +207,7 @@ function removeOp()
     console.log(screen.value);
 }
 
+//operations done on 
 function operations()
 {
     let n = screen.value;
