@@ -1,0 +1,37 @@
+body{
+    background-color: rgb(245, 243, 243);
+}
+
+.form-control{
+    border: 1.5px solid rgb(86, 86, 249);
+    border-radius: 8px;
+}
+
+h1{
+    letter-spacing: 4px;
+}
+
+.btn{
+    background-color: rgb(161, 212, 230);
+    border-radius: 8px;
+    height: 40px;
+}
+
+button:hover{
+    background-color: aqua;
+}
+
+.container{
+    margin-top: 7.2%;
+    box-shadow: -2px 2px 2px 2px rgb(220, 215, 215);
+    box-shadow: -2px rgb(220, 215, 215);
+    border: 2px solid rgb(220, 215, 215);
+}
+
+input:focus{
+    border: none;
+}
+
+#spanner{
+    display: none;
+}
