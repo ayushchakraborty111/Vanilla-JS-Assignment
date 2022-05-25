@@ -13,7 +13,7 @@ let flag = false;
 //Dynamic array
 var arr = [];
 //local storage
-let objArr = JSON.parse(localStorage.getItem('session'));
+let objArr = JSON.parse(localStorage.getItem('session')) || [];
 for(let i=0;i<objArr.length;i++)
 {
     container.innerHTML += objArr[i] + "<br>";        

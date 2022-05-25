@@ -32,6 +32,6 @@ input:focus{
     border: none;
 }
 
-#spanner{
-    display: none;
+#append-div{
+    padding: 10px;
 }
