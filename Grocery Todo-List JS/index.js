@@ -6,11 +6,16 @@ let button = document.getElementById('button');
 let span = document.getElementById('span');
 let a = "";
 let b = "";
+// let c = [];
+let main_div = "";
+let index = 0;
+
 
 
 //check if todos is present or not if not then return empty array
 let item = JSON.parse(localStorage.getItem('todo-item')) 
 || []; // fallback 
+
 
 
 
@@ -26,15 +31,27 @@ button.onclick = (e) =>
     {
         if(item.includes(input.value)){
             alert('Already present');
+            // console.log(c);
+            //to equate div with arr[index]
+            index = item.indexOf(input.value);
+            console.log(index);
+            main_div=document.getElementById(index);
+            console.log(main_div);
+            main_div.style.backgroundColor = 'aqua'
+            setTimeout(function(){
+                main_div.style.backgroundColor = 'rgb(245, 243, 243)';
+            }, 600);
         }
         else
         {
-            item.push(input.value)
+            item.push(input.value);
+            localStorage.setItem('todo-item', JSON.stringify(item));
+            listCreatedItems();
         }
     }
-    localStorage.setItem('todo-item', JSON.stringify(item));
-    listCreatedItems();
+    // console.log(main_div);
     input.value = "";
+    // count += 1;
 }
 
 
@@ -64,24 +81,23 @@ input.addEventListener('keydown', (e)=>{
 //     //     } 
 //     // })
 // }
-function editItem(index, span_id, div_id) {
-    let spanBox = document.getElementById(span_id);
+function editItem(index, sp_id, div_id) {
+    let spanBox = document.getElementById(sp_id);
     let divBox = document.getElementById(div_id);
     // console.log(divBox.outerHTML);
-    var check = Math.floor(Math.random*1000);
-    var tick = document.getElementById(check);
-    spanBox.innerHTML = `<input type="text" value='${spanBox.innerText}'>`;
-    divBox.innerHTML = `<i id='${check}' class="fa-solid fa-check"style="color: rgb(54, 233, 90);cursor:progress"></i>`;
+    divBox.innerHTML = `<i class="fa-solid fa-check" style="color: rgb(54, 233, 90);"></i>`;
+    spanBox.innerHTML = `<input type="text" style='width: 60%' class='form-control' value='${spanBox.innerText}'>`;
+
+
     spanBox.addEventListener('keypress', (e) => {
-      if (e.keyCode == 13 || e.keyCode == 32) {
-        item[index] = spanBox.firstElementChild.value;
+      if (e.which == 13) {
+        // console.log(spanBox.firstChild.value);
+        item[index] = spanBox.firstChild.value;
         localStorage.setItem('todo-item', JSON.stringify(item));
         listCreatedItems();
       }
-  
     })
   }
-
 
 
 
@@ -91,18 +107,27 @@ let list = "";
 function listCreatedItems()
 {
     //item is from local storage
-    for(let i=0;i<item.length;i++)
+    for(i=0;i<item.length;i++)
     {
         a = Math.random(Math.random * 100000);
         b = Math.random(Math.random * 100000);
-        list += `<span id='${a}'>${item[i]}</span><div id='${b}' style="float:right;"> <i style="color: green; margin-right: 10px;cursor:grab" class="fa-solid fa-pen-to-square" onClick='editItem(` + i + `,${a},${b})'></i><i style="color:red;cursor:pointer;" class="fa-solid fa-trash" onClick='deleteItem(` + i + `)'></i></div> ` + "<br> ";
+        // c = Math.random(Math.random * 100000);
+        let s = `<div class="row" id='${i}'>
+        <div class="col-sm-11">
+        <span id='${a}'>${item[i]}</span>
+        </div>
+        <div class="col-sm-1">
+        <div id='${b}'> <i style="color: green; margin-right: 10px;cursor:grab" class="fa-solid fa-pen-to-square" onClick='editItem(` + i + `,${a},${b})'></i><i style="color:red;cursor:pointer;" class="fa-solid fa-trash" onClick='deleteItem(` + i + `)'></i></div> 
+        </div>
+        </div>`;
+        list+=s;
+        // c.push(i);
     }
     // console.log(list);
     ul.style.listStyle = "none";
     ul.innerHTML = list;
     list = "";
 }
-
 
 
 
