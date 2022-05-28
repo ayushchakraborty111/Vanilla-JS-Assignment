@@ -2,10 +2,22 @@ const obj = {
     name: "Ayush",
     age: "",
     hobbies: ["music", "sports", "_", "riding"],
+    education:[
+    {
+        "Secondary" : "abc",
+    },
+    {
+        "HigherSecondary": "xyz"
+    },
+    {
+        "postGraduate": null
+    }
+    ],
     address: {
         city: "Chandigarh",
         Po: null,
         House_no: "",
+        randomCheck: ["music", "sports", "_", "riding"],
     } 
 };
 
@@ -88,7 +100,21 @@ function changeObj(obj)
                     index = arr.indexOf('_');
                     arr.splice(index, 1);
                 }
+                else if(arr.includes(''))
+                {
+                    index = arr.indexOf('');
+                    arr.splice(index, 1);
+                }
+                else if(arr.includes(null))
+                {
+                    index = arr.indexOf(null);
+                    arr.splice(index, 1);
+                }
                 obj[key] = arr;
+                if(typeof obj[key] == 'object')
+                {
+                    changeObj(obj[key]);
+                }
             }
             else if(typeof obj[key] == 'object')
             {
