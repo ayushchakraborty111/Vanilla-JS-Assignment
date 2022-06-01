@@ -13,54 +13,74 @@
 </head>
 <body>
     <div class="container" id="div1">
-        <h1 class="text-center text-light" id="score">Score <span id="span1">0</span></h1>
-        <h2 class="text-center text-light" id="lives">Life <span id="span2">5</span></h2>
+        <h1 class="text-center text-light" id="scores"><span id="span1">Score 0</span></h1>
+        <h2 class="text-center text-light" id="lives"><span id="span2">Life 5</span></h2>
     </div>
-    <div class="container-fluid mt-1">
+
+    <div class="container-fluid mt-1" id="main-div">
+        <div id="winModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p>You win & score is <span id="sc1"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary"
+                        data-bs-dismiss="modal" aria-label="close"  id="btn1">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="gameOverModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <img src="https://c.tenor.com/xDsP2jTbBB4AAAAC/game-over.gif" height="100" width="470" alt="">
+                    </div>
+                    <div class="modal-footer text-center">
+                        <button class="btn btn-success" id="btn2">Play again</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row d-flex justify-content-evenly align-items-center">
             <div class="col-sm-4">
-                <input type="checkbox" id="card-1"/>
-                <label class="card-container" for='card-1'>
-                <div class="card-flip" style="height: 120px;width: 120px;">
+                <div class="card-flip" id="card1" onclick="rotate('card1','b1')" style="height: 120px;width: 120px;">
                     <!-- Card 2 Front -->
-                    <div class="card front">
+                    <div class="card front" id="f1">
                         <img src="https://media.istockphoto.com/photos/tarot-fool-or-joker-austrian-taroch-playing-card-1900-picture-id511790603?s=612x612" class="card-img-top img-fluid">
                     </div>
                     <!-- Card 2 Back -->
                     <div class="card back">
-                        <img src="" alt="" class="img1">
+                        <img src="" alt="" class="img1" id="b1">
                     </div>
                     <!-- End Card 2 Back -->
                 </div>
                 </label>
             </div>
             <div class="col-sm-4">
-                <input type="checkbox" id="card-2"/>
-                <label class="card-container" for='card-2'>
-                <div class="card-flip" style="height: 120px;width: 120px;">
+                <div class="card-flip" id="card2" onclick="rotate('card2','b2')" style="height: 120px;width: 120px;">
                     <!-- Card 2 Front -->
-                    <div class="card front">
+                    <div class="card front" id="f2">
                         <img src="https://media.istockphoto.com/photos/tarot-fool-or-joker-austrian-taroch-playing-card-1900-picture-id511790603?s=612x612" class="card-img-top img-fluid">
                     </div>
                     <!-- Card 2 Back -->
                     <div class="card back">
-                        <img src="" alt="" class="img1">
+                        <img src="" alt="" class="img1" id="b2">
                     </div>
                     <!-- End Card 2 Back -->
                 </div>
                 </label>
             </div>
             <div class="col-sm-4">
-                <input type="checkbox" id="card-3"/>
-                <label class="card-container" for='card-3'>
-                <div class="card-flip" style="height: 120px;width: 120px;">
+                <div class="card-flip" id="card3" onclick="rotate('card3','b3')" style="height: 120px;width: 120px;">
                     <!-- Card 2 Front -->
-                    <div class="card front">
+                    <div class="card front" id="f3">
                         <img src="https://media.istockphoto.com/photos/tarot-fool-or-joker-austrian-taroch-playing-card-1900-picture-id511790603?s=612x612" class="card-img-top img-fluid">
                     </div>
                     <!-- Card 2 Back -->
                     <div class="card back">
-                        <img src="" alt="" class="img1">
+                        <img src="" alt="" class="img1" id="b3">
                     </div>
                     <!-- End Card 2 Back -->
                 </div>
@@ -69,48 +89,42 @@
         </div>
         <div class="row d-flex justify-content-evenly align-items-center pt-5">
             <div class="col-sm-4">
-                <input type="checkbox" id="card-4"/>
-                <label class="card-container" for='card-4'>
-                <div class="card-flip" style="height: 120px;width: 120px;">
+                <div class="card-flip" id="card4" onclick="rotate('card4','b4')" style="height: 120px;width: 120px;">
                     <!-- Card 2 Front -->
-                    <div class="card front">
+                    <div class="card front" id="f4">
                         <img src="https://media.istockphoto.com/photos/tarot-fool-or-joker-austrian-taroch-playing-card-1900-picture-id511790603?s=612x612" class="card-img-top img-fluid">
                     </div>
                     <!-- Card 2 Back -->
                     <div class="card back">
-                        <img src="" alt="" class="img1">
+                        <img src="" alt="" class="img1" id="b4">
                     </div>
                     <!-- End Card 2 Back -->
                 </div>
                 </label>
             </div>
             <div class="col-sm-4">
-                <input type="checkbox" id="card-5"/>
-                <label class="card-container" for='card-5'>
-                <div class="card-flip"  style="height: 120px;width: 120px;">
+                <div class="card-flip" id="card5" onclick="rotate('card5','b5')" style="height: 120px;width: 120px;">
                     <!-- Card 2 Front -->
-                    <div class="card front">
+                    <div class="card front" id="f5">
                         <img src="https://media.istockphoto.com/photos/tarot-fool-or-joker-austrian-taroch-playing-card-1900-picture-id511790603?s=612x612" class="card-img-top img-fluid">
                     </div>
                     <!-- Card 2 Back -->
                     <div class="card back">
-                        <img src="" alt="" class="img1">
+                        <img src="" alt="" class="img1" id="b5">
                     </div>
                     <!-- End Card 2 Back -->
                 </div>
                 </label>
             </div>
             <div class="col-sm-4">
-                <input type="checkbox" id="card-6"/>
-                <label class="card-container" for='card-6'>
-                <div class="card-flip" style="height: 120px;width: 120px;">
+                <div class="card-flip" id="card6" onclick="rotate('card6','b6')" style="height: 120px;width: 120px;">
                     <!-- Card 2 Front -->
-                    <div class="card front">
+                    <div class="card front" id="f6">
                         <img src="https://media.istockphoto.com/photos/tarot-fool-or-joker-austrian-taroch-playing-card-1900-picture-id511790603?s=612x612" class="card-img-top img-fluid">
                     </div>
                     <!-- Card 2 Back -->
                     <div class="card back">
-                        <img src="" alt="" class="img1">
+                        <img src="" alt="" class="img1" id="b6">
                     </div>
                     <!-- End Card 2 Back -->
                 </div>
@@ -119,48 +133,42 @@
         </div>
         <div class="row d-flex justify-content-evenly align-items-center pt-5">
             <div class="col-sm-4">
-                <input type="checkbox" id="card-7"/>
-                <label class="card-container" for='card-7'>
-                <div class="card-flip" style="height: 120px;width: 120px;">
+                <div class="card-flip" id="card7" onclick="rotate('card7','b7')" style="height: 120px;width: 120px;">
                     <!-- Card 2 Front -->
-                    <div class="card front">
+                    <div class="card front" id="f7">
                         <img src="https://media.istockphoto.com/photos/tarot-fool-or-joker-austrian-taroch-playing-card-1900-picture-id511790603?s=612x612" class="card-img-top img-fluid">
                     </div>
                     <!-- Card 2 Back -->
                     <div class="card back">
-                        <img src="" alt="" class="img1">
+                        <img src="" alt="" class="img1" id="b7">
                     </div>
                     <!-- End Card 2 Back -->
                 </div>
                 </label>
             </div>
             <div class="col-sm-4">
-                <input type="checkbox" id="card-8"/>
-                <label class="card-container" for='card-8'>
-                <div class="card-flip" style="height: 120px;width: 120px;">
+                <div class="card-flip" id="card8" onclick="rotate('card8','b8')" style="height: 120px;width: 120px;">
                     <!-- Card 2 Front -->
-                    <div class="card front">
+                    <div class="card front" id="f8">
                         <img src="https://media.istockphoto.com/photos/tarot-fool-or-joker-austrian-taroch-playing-card-1900-picture-id511790603?s=612x612" class="card-img-top img-fluid">
                     </div>
                     <!-- Card 2 Back -->
                     <div class="card back">
-                        <img src="" alt="" class="img1">
+                        <img src="" alt="" class="img1" id="b8">
                     </div>
                     <!-- End Card 2 Back -->
                 </div>
                 </label>
             </div>
             <div class="col-sm-4">
-                <input type="checkbox" id="card-9"/>
-                <label class="card-container" for='card-9'>
-                <div class="card-flip" style="height: 120px;width: 120px;">
+                <div class="card-flip" id="card9" onclick="rotate('card9','b9')" style="height: 120px;width: 120px;">
                     <!-- Card 2 Front -->
-                    <div class="card front">
+                    <div class="card front" id="f9">
                         <img src="https://media.istockphoto.com/photos/tarot-fool-or-joker-austrian-taroch-playing-card-1900-picture-id511790603?s=612x612" class="card-img-top img-fluid">
                     </div>
                     <!-- Card 2 Back -->
                     <div class="card back">
-                        <img src="" alt="" class="img1">
+                        <img src="" alt="" class="img1" id="b9">
                     </div>
                     <!-- End Card 2 Back -->
                 </div>

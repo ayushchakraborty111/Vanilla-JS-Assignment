@@ -47,14 +47,41 @@ body{
   
   .front {
     grid-area: frontAndBack;
+    transform: rotateY(0);
   }
   
   .back {
     grid-area: frontAndBack;
-    transform: rotateY(-180deg);
+    transform: rotateY(180deg);
   }
-  
-  input[type='checkbox']:checked + .card-container .card-flip {
+
+  .card.flip .back{
+    transform: rotateY(0);
+  }
+
+  .card.flip .front{
     transform: rotateY(180deg);
   }
   
+  /* input[type='checkbox']:checked + .card-container .card-flip {
+    transform: rotateY(180deg);
+  } */
+
+  .flipcard{
+    transform: rotateY(180deg);
+    transform-style: preserve-3d;
+  }
+
+  #main-div{
+    position: relative;
+  }
+
+  #winModal{
+    z-index: 15;
+    margin: 10px;
+    display: none;
+  }
+
+  #gameOverModal{
+    display: none;
+  }
