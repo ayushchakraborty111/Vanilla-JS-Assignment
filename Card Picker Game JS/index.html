@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,32 +19,28 @@
     </div>
 
     <div class="container-fluid mt-1" id="main-div">
-        <div id="winModal">
+        <div id="winModal" class="modal hide fade-in" data-keyboard="false" data-backdrop="static">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-body">
                         <p>You win & score is <span id="sc1"></span></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary"
+                        <button class="btn btn-info"
                         data-bs-dismiss="modal" aria-label="close"  id="btn1">Continue</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="gameOverModal">
+        <div id="gameOverModal" class="modal hide fade-in" data-keyboard="false" data-backdrop="static">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-body">
-                        <img src="https://c.tenor.com/xDsP2jTbBB4AAAAC/game-over.gif" height="100" width="470" alt="">
-                    </div>
-                    <div class="modal-footer text-center">
+                        <img src="https://c.tenor.com/xDsP2jTbBB4AAAAC/game-over.gif" height="100" width="400" alt="">
                         <button class="btn btn-success" id="btn2">Play again</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row d-flex justify-content-evenly align-items-center">
+        <div class="row">
             <div class="col-sm-4">
                 <div class="card-flip" id="card1" onclick="rotate('card1','b1')" style="height: 120px;width: 120px;">
                     <!-- Card 2 Front -->
@@ -87,7 +84,7 @@
                 </label>
             </div>
         </div>
-        <div class="row d-flex justify-content-evenly align-items-center pt-5">
+        <div class="row pt-5">
             <div class="col-sm-4">
                 <div class="card-flip" id="card4" onclick="rotate('card4','b4')" style="height: 120px;width: 120px;">
                     <!-- Card 2 Front -->
@@ -131,7 +128,7 @@
                 </label>
             </div>
         </div>
-        <div class="row d-flex justify-content-evenly align-items-center pt-5">
+        <div class="row pt-5">
             <div class="col-sm-4">
                 <div class="card-flip" id="card7" onclick="rotate('card7','b7')" style="height: 120px;width: 120px;">
                     <!-- Card 2 Front -->

@@ -73,15 +73,34 @@ body{
   }
 
   #main-div{
-    position: relative;
+    pointer-events: all;
   }
 
+
   #winModal{
-    z-index: 15;
+    z-index: 20;
     margin: 10px;
+    position: absolute;
+    left: 4%;
+    top: 40%;
     display: none;
   }
 
   #gameOverModal{
     display: none;
+    position: absolute;
+    z-index: 40;
+    left: 3%;
+    top: 40%;
+    height: auto;
+  }
+
+
+  .row{
+    display: flex;
+    justify-content: center;
+  }
+
+  body{
+    opacity: 1;
   }
