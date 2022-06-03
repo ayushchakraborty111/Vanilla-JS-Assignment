@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+form{
+    border: 1px solid black;
+    width: 40%;
+    margin: 20px auto;
+}
+
+.form-group{
+    padding: 12px;
+}
+
+.input-group{
+    width: 100%;
+}
+
+#main-div{
+    width: 400px;
+}
+
+@media screen and (max-width: 800px){
+    body{
+        overflow-x: hidden;
+        zoom: 1;
+    }
+}

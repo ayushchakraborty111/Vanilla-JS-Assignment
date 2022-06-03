@@ -14,6 +14,8 @@ let arr = ['https://media.istockphoto.com/photos/king-of-hearts-playing-card-iso
 
 document.getElementById('btn1').onclick = () =>{
     document.getElementById('winModal').style.display = 'none';
+    document.getElementById('main-div').style.pointerEvents = 'all';
+    document.getElementsByTagName('body')[0].style.opacity = '1';
 }
 
 
@@ -65,6 +67,7 @@ live = 5;
 //click to reload
 document.getElementById('btn2').onclick = ()=>{
     location.reload();
+    document.getElementsByTagName('body')[0].style.opacity = '1';
 }
 
 
@@ -83,6 +86,8 @@ function isMatch(image1, image2)
            document.getElementById('sc1').innerHTML = points;
            document.getElementById('winModal').style.display = 'block';
            document.getElementById('main-div').style.pointerEvents = 'none';
+           document.getElementById('winModal').style.opacity = '1';
+           document.getElementsByTagName('body')[0].style.opacity = '0.7';
        }   
        count = 0;
    }
@@ -92,7 +97,9 @@ function isMatch(image1, image2)
        if(live < 0)
        {
            document.getElementById('gameOverModal').style.display = 'block';
+           document.getElementById('gameOverModal').style.opacity = '1';
            document.getElementById('main-div').style.pointerEvents = 'none';
+           document.getElementsByTagName('body')[0].style.opacity = '0.7';
            live = 0;
        }
         span.innerHTML = "Life " + live; 
