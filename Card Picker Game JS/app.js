@@ -37,7 +37,11 @@ function rotate(cardId, imageId)
         image2 = imageId;
         document.getElementById(num2).style = `transition: 0.7s; transform: rotateY(180deg);height: 120px;width: 120px;`
         setTimeout(flipCard, 800);
-        isMatch(image1, image2);
+        //Check to encounter if ids are same
+        if(image1!=image2)
+        {
+            isMatch(image1, image2);
+        }
         count = 0;
     }
 }
