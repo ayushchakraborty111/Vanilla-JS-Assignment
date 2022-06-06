@@ -4,11 +4,10 @@ $(function () {
 
 let nameInp = document.getElementById('name');
 let datePicker = document.getElementById('dtpickerdemo');
-let desc = document.getElementById('desc');
+let description = document.getElementById('desc');
 let button = document.getElementById('submitBtn');
 let container = document.getElementById('container');
 let list = "";
-let data = [];
 
 
 //for local storage
@@ -17,52 +16,86 @@ let todoItem = JSON.parse(localStorage.getItem('taskTodo')) || [];
 
 button.addEventListener('click', (e)=>{
     e.preventDefault();
-    if(nameInp.value == "" || datePicker.value == "" || desc.value == "")
+    if(nameInp.value == "")
     {
-        alert('Empty fields not allowed');
+        alert("Name can't be empty");
     }
     else
     {
-        let n1 = `<b>${nameInp.value}</b>`;
-        let n2 = `Time: ${datePicker.value}`;
-        let n3 = `${desc.value}`;
-        data = [n1, n2, n3];
-        let data1 = data.join(" ");
-        todoItem.push(data1);
-        console.log(todoItem.length);
+        const obj = {name: nameInp.value,date: datePicker.value, description: description.value};
+        for(let i in obj)
+        {
+            if(obj[i] == null || obj[i] == '')
+            {
+                delete obj[i];
+            }
+        }
+        todoItem.push(obj);
+        console.log(todoItem);
+        // console.log(todoItem.length);
         localStorage.setItem('taskTodo', JSON.stringify(todoItem));
-        addTodo();//render
+        generateTodo();//render
         nameInp.value = "";
         datePicker.value = "";
-        desc.value = "";
+        description.value = "";
     }
 })
 
-//delete single task
+//delete single task by index of an array and rendering it to the html
 function deleteIndex(index)
 {
+    // console.log(index);
     todoItem.splice(index, 1);
     localStorage.setItem('taskTodo', JSON.stringify(todoItem));
-    addTodo();
+    generateTodo();
 }
 
 
-//render todo div
-function addTodo()
+//render into div container
+function generateTodo()
 {
+    // list = `
+    // <ul>
+    //     ${todoItem.map((todo,i)=>`
+    //     <li>${todo.name}</li>
+    //     <li>${todo.date}</li>
+    //     <li>${todo.description}</li>
+    //     <div><a onClick='deleteIndex(`+i+`)'>Remove</a></div>
+    //     `)}
+    // </ul>
+    // todoItem.forEach((todos, i)=>{
+    //     let s = `<div>
+    //     ${appendTodo(todos, i)}
+    //     <div><a onClick='deleteIndex(`+i+`)'>Remove</a></div>
+    //     </div>`;
+    //     list += s;
+    // })
+    // `;
     for(let i=0;i<todoItem.length;i++)
     {
         let s = `
         <div class='col-sm-3' style='border: 1.5px solid black;margin: 10px;'>
-        ${todoItem[i]} <div><a onClick='deleteIndex(`+i+`)'>Remove</a></div>
-        </div>`;
+        <h4>${todoItem[i].name}</h4>
+        <p><b>Time:</b>${todoItem[i].date}</p>
+        <p class='text-muted'>${todoItem[i].description}</p>
+        <div><a onClick='deleteIndex(`+i+`)'>Remove</a></div>
+        </div>
+        `;
         list += s;
     }
-    // container.style = 'text-align: center';
     container.innerHTML = list;
     list = "";
 }
 
+
+// function appendTodo(todos, i)
+// {
+//     for(let key of todos)
+//     {
+//         return `${key} : ${todos[key]}`;
+//     }
+// }
+
 window.onload = () =>{
-    addTodo();
+    generateTodo();
 }

@@ -104,3 +104,19 @@ body{
   body{
     opacity: 1;
   }
+
+  @media screen and (max-width: 933px){
+      .col-sm-4{
+        margin: 20px;
+      }
+  }
+
+  @media screen and (max-width: 500px){
+    .col-sm-4{
+      margin: 35px;
+    }
+    body{
+      overflow-x: hidden;
+      zoom: 0.7;
+    }
+  }

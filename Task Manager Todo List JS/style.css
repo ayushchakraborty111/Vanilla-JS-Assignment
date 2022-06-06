@@ -17,13 +17,9 @@ form{
     width: 100%;
 }
 
-#main-div{
-    width: 400px;
-}
-
 @media screen and (max-width: 800px){
     body{
         overflow-x: hidden;
-        zoom: 1;
+        zoom: 0.7;
     }
 }
