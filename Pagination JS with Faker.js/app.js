@@ -1,5 +1,6 @@
 "use strict";
 let button = document.getElementById('btn');
+let genInput = document.getElementById('generate');
 let name = document.getElementById('name');
 let rollNo = document.getElementById('rno');
 let mobNo = document.getElementById('mno');
@@ -27,50 +28,53 @@ let end=0;
 
 button.addEventListener('click', (e)=>{
     e.preventDefault();
-    const randomName = faker.name.findName();
-    name.value = randomName;
-    const phNo = faker.phone.phoneNumberFormat()
-    mobNo.value = phNo;
-    const email1 = faker.internet.email();
-    email.value = email1;
-    const rno = faker.random.number({ min: 1, max: 100000 }); 
-    rollNo.value = rno;
-    const sem = faker.random.number({ min: 1, max: 8 });
-    currSem.value = sem; 
-    const add = {
-        streetAddress: faker.address.streetAddress(),
-        streetName: faker.address.streetName(),
-        city: faker.address.city(),
-        state: faker.address.state(),
-        country: faker.address.country()
-    };
-    address.value = JSON.stringify(''+Object.values(add));    
+    if(genInput.value == "")
+    {   
+        alert('Please specify no of rows');
+    }
+    arr = [];
+    count = 1;
+    for(let i=0;i<genInput.value;i++)
+    {
+        const randomName = faker.name.findName();
+        name.value = randomName;
+        const phNo = faker.phone.phoneNumberFormat()
+        mobNo.value = phNo;
+        const email1 = faker.internet.email();
+        email.value = email1;
+        const rno = faker.random.number({ min: 1, max: 100000 }); 
+        rollNo.value = rno;
+        const sem = faker.random.number({ min: 1, max: 8 });
+        currSem.value = sem; 
+        const add = {
+            streetAddress: faker.address.streetAddress(),
+            streetName: faker.address.streetName(),
+            city: faker.address.city(),
+            state: faker.address.state(),
+            country: faker.address.country()
+        };
+        address.value = JSON.stringify(''+Object.values(add));
+        appendToArr();
+    }    
 })
 
 
-button1.addEventListener('click', (e)=>{
-    e.preventDefault();
-    if(name.value == "" || rollNo.value == "" || mobNo.value == "" || email.value == "" || currSem.value == "" || address.value == "")
-    {
-        alert('Empty field/fields not allowed');
+function appendToArr()
+{
+    const main_obj = {
+        id: count,
+        name: name.value,
+        rollNo: rollNo.value,
+        mobileNo: mobNo.value,
+        email: email.value,
+        currentSem: currSem.value,
+        address: address.value
     }
-    else
-    {
-        const main_obj = {
-            id: count,
-            name: name.value,
-            rollNo: rollNo.value,
-            mobileNo: mobNo.value,
-            email: email.value,
-            currentSem: currSem.value,
-            address: address.value
-        }
-        arr.push(main_obj);
-        count++;
-        console.log(arr);
-        renderData();
-    }
-})
+    arr.push(main_obj);
+    count++;
+    renderData();
+}
+
 
 //prev button
 prevButton.addEventListener('click', ()=>{
@@ -83,7 +87,8 @@ prevButton.addEventListener('click', ()=>{
 
 //next button
 nextButton.addEventListener('click', ()=>{
-    currPage++;
+    if(currPage * maxContent< arr.length)
+        currPage++;
     renderData();
 }) 
 
@@ -96,27 +101,32 @@ console.log(firstPageButton);
 
 //first page button
 firstPageButton.addEventListener('click', ()=>{
-    currPage = 1;
+    // if(currPage*maxContent<arr.length)
+        currPage = 1;
     renderData();
 })
 
 secondPageButton.addEventListener('click', ()=>{
-    currPage = 2;
+    // if(currPage*maxContent<arr.length)
+        currPage = 2;
     renderData();
 })
 
 thirdPageButton.addEventListener('click', ()=>{
-    currPage = 3;
+    // if(currPage*maxContent<arr.length)
+        currPage = 3;
     renderData();
 })
 
 fourthPageButton.addEventListener('click', ()=>{
-    currPage = 4;
+    // if(currPage*maxContent<arr.length)
+        currPage = 4;
     renderData();
 })
 
 fifthPageButton.addEventListener('click', ()=>{
-    currPage = 5;
+    if(currPage*maxContent<arr.length)
+        currPage = 5;
     renderData();
 })
 
@@ -126,6 +136,17 @@ fifthPageButton.addEventListener('click', ()=>{
 function renderData()
 {
     //row is passed to show all the rows appended
+    contain.innerHTML = "";
+    let s = `<tr style='background-color:lightgray;'>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Roll No</th>
+    <th>Mobile No</th>
+    <th>Email</th>
+    <th>Current Sem</th>
+    <th>Address</th>
+    </tr>`
+    list += s;
     arr.filter((row, index)=>{
         start = (currPage-1) * maxContent;
         // console.log(start);
@@ -139,7 +160,7 @@ function renderData()
         <td>${a.id}</td>
         <td>${a.name}</td>
         <td>${a.rollNo}</td>
-        <td>${a.mobileNo}</td>
+        <td style='width: 120px;'>${a.mobileNo}</td>
         <td>${a.email}</td>
         <td>${a.currentSem}</td>
         <td>${a.address}</td>

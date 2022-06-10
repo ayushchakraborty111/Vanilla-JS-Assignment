@@ -2,3 +2,14 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+#div1{
+    display: flex;
+    justify-content: space-evenly;
+    width: 60%;
+    margin: 20px auto;
+}
+
+form{
+    display: none;
+}

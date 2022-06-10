@@ -11,6 +11,10 @@
 </head>
 <body>
     <div class="container">
+        <div class="input-group" id="div1">
+            <span class="input-group-text">Generate</span>
+            <input type="text" class="form-control" id="generate">
+        </div>
         <form class="mt-3 form-inline">
             <div class="form-group">
                 <label for="name" class="sr-only">Name</label> <input type="text" class="form-control" id="name">
@@ -31,10 +35,12 @@
                 <label for="address">Address</label> <input type="text" class="form-control" id="address">
             </div>
             <br>
-            <button class="btn btn-warning" id="btn">Generator</button>
-            <button class="btn btn-success" id="btn1">Append</button>
         </form>
-</div>
+        <div id="buttonDiv" class="d-flex justify-content-center">
+        <button class="btn btn-warning" id="btn">Generator</button>
+        <!-- <button class="btn btn-success" id="btn1">Append</button> -->
+        </div>
+    </div>
     <br>
     <div class="container">
         <table class="table table-bordered table-striped" id="contain">
