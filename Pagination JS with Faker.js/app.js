@@ -101,25 +101,25 @@ console.log(firstPageButton);
 
 //first page button
 firstPageButton.addEventListener('click', ()=>{
-    // if(currPage*maxContent<arr.length)
+    if(currPage*maxContent<arr.length)
         currPage = 1;
     renderData();
 })
 
 secondPageButton.addEventListener('click', ()=>{
-    // if(currPage*maxContent<arr.length)
+    if(currPage*maxContent<arr.length)
         currPage = 2;
     renderData();
 })
 
 thirdPageButton.addEventListener('click', ()=>{
-    // if(currPage*maxContent<arr.length)
+    if(currPage*maxContent<arr.length)
         currPage = 3;
     renderData();
 })
 
 fourthPageButton.addEventListener('click', ()=>{
-    // if(currPage*maxContent<arr.length)
+    if(currPage*maxContent<arr.length)
         currPage = 4;
     renderData();
 })
